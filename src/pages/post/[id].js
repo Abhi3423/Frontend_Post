@@ -13,7 +13,7 @@ function PostDetails() {
 
     const fetchPost = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/posts')
+            const { data } = await axios.get('https://backend-post-inky.vercel.app/posts')
             setPosts(data);
         } catch (error) {
             console.error('Error Fetching data')
