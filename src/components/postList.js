@@ -8,7 +8,7 @@ export default function PostList({ posts, onPostDeleted }) {
 
     const fetchPosts = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/posts');
+            const { data } = await axios.get('https://backend-post-inky.vercel.app/posts');
             setAllPosts(data.posts);
         } catch (error) {
             console.error('Error fetching posts');
@@ -18,7 +18,7 @@ export default function PostList({ posts, onPostDeleted }) {
     
     const fetchReplies = async (postId) => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/posts/${postId}/comments`);
+            const { data } = await axios.get(`https://backend-post-inky.vercel.app/posts/${postId}/comments`);
             setReplies((prevReplies) => ({
                 ...prevReplies,
                 [postId]: data.post.replies,
@@ -31,7 +31,7 @@ export default function PostList({ posts, onPostDeleted }) {
     
     const handleDelete = async (postId) => {
         try {
-            await axios.delete(`http://localhost:5000/posts/${postId}`);
+            await axios.delete(`https://backend-post-inky.vercel.app/posts/${postId}`);
             onPostDeleted(postId);
             fetchPosts(); 
         } catch (error) {
@@ -41,7 +41,7 @@ export default function PostList({ posts, onPostDeleted }) {
 
     const handleReaction = async (postId, reaction) => {
         try {
-            await axios.post(`http://localhost:5000/posts/${postId}/reaction`, { reaction });
+            await axios.post(`https://backend-post-inky.vercel.app/posts/${postId}/reaction`, { reaction });
             fetchPosts();
             fetchReplies(postId); 
         } catch (error) {
@@ -51,7 +51,7 @@ export default function PostList({ posts, onPostDeleted }) {
 
     const handleReply = async (postId, replyContent) => {
         try {
-            await axios.post(`http://localhost:5000/posts/${postId}/reply`, { content: replyContent });
+            await axios.post(`https://backend-post-inky.vercel.app/posts/${postId}/reply`, { content: replyContent });
             fetchPosts(); 
             fetchReplies(postId); 
         } catch (error) {

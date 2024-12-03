@@ -9,7 +9,7 @@ export default function PostForm({postId, onPostCreated}) {
     const handlesubmit = async (e) => {
       e.preventDefault();
       try {
-        await axios.post('http://localhost:5000/posts', {
+        await axios.post('https://backend-post-inky.vercel.app/posts', {
             content, parentId: postId || null
         });
 

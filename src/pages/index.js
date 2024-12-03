@@ -8,7 +8,7 @@ function Home() {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/posts');
+      const { data } = await axios.get('https://backend-post-inky.vercel.app/posts');
       console.log(data)
       setPosts(data.posts);
     } catch (error) {
